@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import DashboardPage from "./dashboard/page";
 
@@ -13,7 +12,7 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
-        <div className={styles.devName}>SDE</div>
+        <div className={styles.devName}>Software engineer</div>
       </div>
 
       <DashboardPage />

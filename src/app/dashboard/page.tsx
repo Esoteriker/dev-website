@@ -1,63 +1,26 @@
 // app/dashboard/page.tsx
-import React from 'react';
-import DashboardLayout from './layout';
-import styles from './page.module.css'; 
+import React from "react";
+import styles from "./page.module.css";
+import { PageDesciption, PageTitle } from "../../../public/ui-constant";
+import Link from "next/link";
+
+const titles = Object.values(PageTitle);
+const descriptions = Object.values(PageDesciption);
 
 const DashboardPage: React.FC = () => {
   return (
-    <DashboardLayout>
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </DashboardLayout>
+    <div className={styles.grid}>
+      {titles.map((title, index) => (
+        <div className={styles.card} key={index}>
+          <Link href={`/dashboard/${title.toLowerCase()}`} key={index}>
+              <h2>
+                {title} <span>-&gt;</span>
+              </h2>
+              <p>{descriptions[index]}</p>
+          </Link>
+        </div>
+      ))}
+    </div>
   );
 };
 
